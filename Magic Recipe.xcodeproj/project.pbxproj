@@ -15,6 +15,10 @@
 		2DCDF4262478105400121FB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDF4242478105400121FB0 /* LaunchScreen.storyboard */; };
 		2DCDF4312478105400121FB0 /* Magic_RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF4302478105400121FB0 /* Magic_RecipeTests.swift */; };
 		2DCDF43C2478105400121FB0 /* Magic_RecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF43B2478105400121FB0 /* Magic_RecipeUITests.swift */; };
+		2DCDF44A247810D700121FB0 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF449247810D700121FB0 /* ConnectionManager.swift */; };
+		2DCDF44C2478121100121FB0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF44B2478121100121FB0 /* Recipe.swift */; };
+		2DCDF44E2479085500121FB0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF44D2479085500121FB0 /* DetailsViewController.swift */; };
+		2DCDF451247909BF00121FB0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCDF450247909BF00121FB0 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		2DCDF4372478105400121FB0 /* Magic RecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Magic RecipeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCDF43B2478105400121FB0 /* Magic_RecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic_RecipeUITests.swift; sourceTree = "<group>"; };
 		2DCDF43D2478105400121FB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCDF449247810D700121FB0 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		2DCDF44B2478121100121FB0 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		2DCDF44D2479085500121FB0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		2DCDF450247909BF00121FB0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCDF451247909BF00121FB0 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +92,7 @@
 				2DCDF42F2478105400121FB0 /* Magic RecipeTests */,
 				2DCDF43A2478105400121FB0 /* Magic RecipeUITests */,
 				2DCDF4172478104B00121FB0 /* Products */,
+				2DCDF44F247909BF00121FB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,9 +113,12 @@
 				2DCDF41B2478104B00121FB0 /* SceneDelegate.swift */,
 				2DCDF41D2478104B00121FB0 /* ViewController.swift */,
 				2DCDF41F2478104B00121FB0 /* Main.storyboard */,
+				2DCDF44D2479085500121FB0 /* DetailsViewController.swift */,
 				2DCDF4222478105400121FB0 /* Assets.xcassets */,
 				2DCDF4242478105400121FB0 /* LaunchScreen.storyboard */,
 				2DCDF4272478105400121FB0 /* Info.plist */,
+				2DCDF449247810D700121FB0 /* ConnectionManager.swift */,
+				2DCDF44B2478121100121FB0 /* Recipe.swift */,
 			);
 			path = "Magic Recipe";
 			sourceTree = "<group>";
@@ -126,6 +139,14 @@
 				2DCDF43D2478105400121FB0 /* Info.plist */,
 			);
 			path = "Magic RecipeUITests";
+			sourceTree = "<group>";
+		};
+		2DCDF44F247909BF00121FB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DCDF450247909BF00121FB0 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCDF41E2478104B00121FB0 /* ViewController.swift in Sources */,
+				2DCDF44A247810D700121FB0 /* ConnectionManager.swift in Sources */,
 				2DCDF41A2478104B00121FB0 /* AppDelegate.swift in Sources */,
 				2DCDF41C2478104B00121FB0 /* SceneDelegate.swift in Sources */,
+				2DCDF44C2478121100121FB0 /* Recipe.swift in Sources */,
+				2DCDF44E2479085500121FB0 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
