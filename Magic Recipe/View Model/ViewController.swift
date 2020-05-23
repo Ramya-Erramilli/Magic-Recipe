@@ -11,19 +11,22 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstTextField: UITextField!
     
-    var ingredients:[String] = []
+    var ingredients=""
     var prevRect:CGRect?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.        
-        print(ConnectionManager().fetchData())
+        
         
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
     }
  
+//    override func viewDidAppear(_ animated: Bool) {
+//        print(ConnectionManager().fetchData())
+//    }
     @IBAction func addTextField(_ sender: UIButton) {
         //    print("here")
         
@@ -33,6 +36,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         sender.frame = CGRect(x: newFrame[0], y:newFrame[1] , width: newFrame[2], height: newFrame[3])
         
     }
+    
+    
+    @IBAction func getRecipesAction(_ sender: UIButton) {
+        ConnectionManager().fetchData(ingredients: ingredients)
+        
+    }
+    
     
     
     func addNewTextField(){
@@ -51,11 +61,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let ingredient = textField.text{
-            print(ingredient)
-            ingredients.append(ingredient)
+        if var ing = textField.text{
+            ing = ing.trimmingCharacters(in: .whitespaces)
+            if self.ingredients == ""{
+                self.ingredients += ing
+            }else{
+                self.ingredients += ",\(ing)"
+            }
         }
-        print(ingredients)
+        ingredients = ingredients.trimmingCharacters(in: .whitespaces)
+//        print(ingredients)
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
@@ -64,5 +79,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.endEditing(true)
         return true
     }
+    
+    
+   
+    
 }
 

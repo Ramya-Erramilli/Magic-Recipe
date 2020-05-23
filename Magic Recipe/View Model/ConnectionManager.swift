@@ -8,43 +8,44 @@
 
 
 import Foundation
+// Connection manger recipes not avaiblee outside closure
+// get recipes, pouplate cell by image and title
+// pass href for detaild vc
 
 
-struct ConnectionManager {
+
+
+class ConnectionManager {
+    static var recipes:[Recipe] = []
     
-    func fetchData() ->[Recipe]{
-        var recipes:[Recipe]?
-        let headers = [
-            "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
-            "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
-        ]
+    let headers = [
+        "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
+        "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
+    ]
+    
+    func fetchData(ingredients: String){
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://recipe-puppy.p.rapidapi.com")! as URL,
+        var url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ingredients)")! as URL
+
+        let request = NSMutableURLRequest(url: url,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
         
         let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             if let err = error { //Error in retriving data
-                //                CustomAlert.createAlert(title: "Error", descr: err.localizedDescription)
-                print(err)
-            } else { //Got response
-                _ = response as? HTTPURLResponse
-                //                print(httpResponse)
+                print(err.localizedDescription)
             }
-            
             if let safeData = data{
-                recipes = self.parseJson(recipeData: safeData)
+                ConnectionManager.recipes = self.parseJson(recipeData: safeData)
+                print(ConnectionManager.recipes)
             }
         })
-        
         dataTask.resume()
-        if let recipesNonEmpty =  recipes{
-            return recipesNonEmpty
-        }
-        return []
+        
     }
     
     
@@ -57,14 +58,15 @@ struct ConnectionManager {
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
+//                ConnectionManager.recipes.append(recipe)
             }
-            
-            let recipeData = RecipeData(href: decodedData.href, title: decodedData.title, results: recipes, version: decodedData.version)
-           
-//            print(decodedData.results[0].ingredients,decodedData.results[0].title)
+//
+//            let recipeData = RecipeData(href: decodedData.href, title: decodedData.title, results: recipes, version: decodedData.version)
+//
         } catch{
             print(error)
         }
+//        ConnectionManager.recipes = recipes
         return recipes
     }
     
