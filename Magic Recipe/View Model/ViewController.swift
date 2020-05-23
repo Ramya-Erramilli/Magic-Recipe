@@ -17,24 +17,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.        
-        ConnectionManager().fetchData()
+        print(ConnectionManager().fetchData())
         
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
     }
-
-   
-
+ 
     @IBAction func addTextField(_ sender: UIButton) {
-//    print("here")
+        //    print("here")
         
         addNewTextField()
         
-        var newFrame = [sender.frame.minX,sender.frame.minY+prevRect!.height+10.0,sender.frame.width,sender.frame.height]
-        
+        let newFrame = [sender.frame.minX,sender.frame.minY+prevRect!.height+10.0,sender.frame.width,sender.frame.height]
         sender.frame = CGRect(x: newFrame[0], y:newFrame[1] , width: newFrame[2], height: newFrame[3])
-    
+        
     }
     
     

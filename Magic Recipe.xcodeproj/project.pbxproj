@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D475536247975B100DB0E86 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D475535247975B100DB0E86 /* CustomAlert.swift */; };
 		2DCDF41A2478104B00121FB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF4192478104B00121FB0 /* AppDelegate.swift */; };
 		2DCDF41C2478104B00121FB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF41B2478104B00121FB0 /* SceneDelegate.swift */; };
 		2DCDF41E2478104B00121FB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF41D2478104B00121FB0 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D475535247975B100DB0E86 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		2DCDF4162478104B00121FB0 /* Magic Recipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Recipe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCDF4192478104B00121FB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCDF41B2478104B00121FB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				2DCDF44D2479085500121FB0 /* DetailsViewController.swift */,
+				2D475535247975B100DB0E86 /* CustomAlert.swift */,
 				2DCDF449247810D700121FB0 /* ConnectionManager.swift */,
 				2DCDF41D2478104B00121FB0 /* ViewController.swift */,
 			);
@@ -310,6 +313,7 @@
 				2DCDF41C2478104B00121FB0 /* SceneDelegate.swift in Sources */,
 				2DCDF44C2478121100121FB0 /* Recipe.swift in Sources */,
 				2DCDF44E2479085500121FB0 /* DetailsViewController.swift in Sources */,
+				2D475536247975B100DB0E86 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
