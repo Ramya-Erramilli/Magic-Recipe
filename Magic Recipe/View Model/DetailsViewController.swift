@@ -13,9 +13,10 @@ class DetailsViewController: UIViewController, WKNavigationDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         webView.navigationDelegate = self
-        
+    }
+    
+    func loadURL(url: String){
         if let url = URL(string: "https://www.allrecipes.com/recipe/116899/monterey-turkey-omelet/") {
             let request = URLRequest(url: url)
             webView.load(request)

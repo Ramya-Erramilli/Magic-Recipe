@@ -8,8 +8,8 @@
 
 
 import Foundation
-struct ConnectionManager {
-    
+
+struct ConnectionManager {    
     func fetchData() {
         let headers = [
             "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
