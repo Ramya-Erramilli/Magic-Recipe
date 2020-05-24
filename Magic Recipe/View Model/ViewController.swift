@@ -34,33 +34,23 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
 //    var cm = ConnectionManager()
     @IBAction func getRecipesAction(_ sender: UIButton) {
-        
-        
     }
 
 //    var dest:RecipesViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        cm.fetchData(ingredients: ingredients)
-        var dest = segue.destination as? RecipesViewController
+        let dest = segue.destination as? RecipesViewController
         dest!.ing = self.ingredients
-//        dest?.data = recipesList
-//        print("recipe count",recipesList.count)
-
     }
-    
-//    func didGetRecipes(recipes: [Recipe]) {
-//        self.recipesList = recipes
-//    }
-
     func addNewTextField(){
         let newTextField =  UITextField(frame: CGRect(x: prevRect!.minX, y: prevRect!.minY+prevRect!.height+10.0, width: prevRect!.width, height: prevRect!.height))
-        newTextField.placeholder = "Enter text here"
+        newTextField.placeholder = "Enter ingredient name here"
         newTextField.font = UIFont.systemFont(ofSize: 15)
         newTextField.borderStyle = UITextField.BorderStyle.roundedRect
         newTextField.autocorrectionType = UITextAutocorrectionType.no
         newTextField.becomeFirstResponder()
-        newTextField.returnKeyType = UIReturnKeyType.default
+        newTextField.returnKeyType = UIReturnKeyType.done        
         newTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         newTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         newTextField.autocapitalizationType = .none
@@ -79,6 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
             }
         }
         ingredients = ingredients.trimmingCharacters(in: .whitespaces)
+        print(ingredients)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

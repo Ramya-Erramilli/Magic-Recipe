@@ -16,8 +16,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var connectionManager = ConnectionManager()
     var data:[Recipe] = []
     var ing:String = ""
-    var descrURL:String = ""
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewOutlet.delegate = self
@@ -36,22 +35,27 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         cell.name.text = currentRecipe.title
         let imgNum = Array(currentRecipe.thumbnail)[currentRecipe.thumbnail.count-5]
         let imageURL = "http://img.recipepuppy.com/\(imgNum).jpg"
-        print(imageURL)
+//        print(imageURL)
         cell.imageViewOutlet.setImageFromUrl(ImageURL: imageURL)
+        
+//        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
+//        let image = UIImage(named: "cellBackground")
+//        imageView.image = image
+//        cell.backgroundView = UIView()
+//        cell.backgroundView!.addSubview(imageView)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        descrURL = data[indexPath.row].href
+        var detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailVC") as! DetailsViewController
         
+        detailVC.url = data[indexPath.row].href
+        self.show(detailVC, sender: self)
+     
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest =  segue.destination as! DetailsViewController
-        dest.url = descrURL
-    }
-    
+
 
     func didGetRecipes(recipes: [Recipe]) {
         data = recipes

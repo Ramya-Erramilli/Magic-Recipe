@@ -26,8 +26,9 @@ struct ConnectionManager{
     ]
    
     func fetchData(ing: String){
+
          let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)")! as URL
-        
+
         let request = NSMutableURLRequest(url: url,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
@@ -55,11 +56,9 @@ struct ConnectionManager{
         var recipes :[Recipe] = []
         do {
             let decodedData = try  decoder.decode(RecipeData.self, from: recipeData)
-            
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
-                print("here")
             }
         } catch{
             print(error)
