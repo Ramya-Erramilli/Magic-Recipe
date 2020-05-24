@@ -19,8 +19,7 @@ protocol GetRecipesDelegate {
 struct ConnectionManager{
     
     var delegate: GetRecipesDelegate?
-    static var recipes:[Recipe] = []
-    
+ 
     let headers = [
         "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
         "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
@@ -44,8 +43,7 @@ struct ConnectionManager{
             }
             if let safeData = data{
                 let recipes = self.parseJson(recipeData: safeData)
-                self.delegate?.didGetRecipes(recipes: recipes)
-                
+                self.delegate?.didGetRecipes(recipes: recipes)                
             }
         })
         dataTask.resume()
@@ -62,15 +60,11 @@ struct ConnectionManager{
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
-//                ConnectionManager.recipes.append(recipe)
             }
-//
-//            let recipeData = RecipeData(href: decodedData.href, title: decodedData.title, results: recipes, version: decodedData.version)
-//
         } catch{
             print(error)
         }
-//        ConnectionManager.recipes = recipes
+
         return recipes
     }
     
