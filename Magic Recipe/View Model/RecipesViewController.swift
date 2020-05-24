@@ -10,7 +10,6 @@ import UIKit
 
 class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetRecipesDelegate {
 
-    
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var connectionManager = ConnectionManager()
@@ -38,11 +37,11 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
 //        print(imageURL)
         cell.imageViewOutlet.setImageFromUrl(ImageURL: imageURL)
         
-//        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
-//        let image = UIImage(named: "cellBackground")
-//        imageView.image = image
-//        cell.backgroundView = UIView()
-//        cell.backgroundView!.addSubview(imageView)
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
+        let image = UIImage(named: "cellBackground")
+        imageView.image = image
+        cell.backgroundView = UIView()
+        cell.backgroundView!.addSubview(imageView)
         
         return cell
     }
@@ -59,6 +58,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
     func didGetRecipes(recipes: [Recipe]) {
         data = recipes
+//        print("data recived")
         DispatchQueue.main.async {
              self.tableViewOutlet.reloadData()
          }

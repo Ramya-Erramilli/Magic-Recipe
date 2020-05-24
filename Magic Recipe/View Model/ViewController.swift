@@ -9,8 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate{
-    
-    
 
     @IBOutlet weak var firstTextField: UITextField!
     
@@ -20,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        cm.delegate = self
+
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
@@ -31,15 +29,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
         let newFrame = [sender.frame.minX,sender.frame.minY+prevRect!.height+10.0,sender.frame.width,sender.frame.height]
         sender.frame = CGRect(x: newFrame[0], y:newFrame[1] , width: newFrame[2], height: newFrame[3])
     }
-    
-//    var cm = ConnectionManager()
+
     @IBAction func getRecipesAction(_ sender: UIButton) {
     }
 
-//    var dest:RecipesViewController?
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        cm.fetchData(ingredients: ingredients)
         let dest = segue.destination as? RecipesViewController
         dest!.ing = self.ingredients
     }
