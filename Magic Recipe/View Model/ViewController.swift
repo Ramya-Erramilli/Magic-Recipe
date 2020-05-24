@@ -8,54 +8,50 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate,GetRecipesDelegate {
-
+class ViewController: UIViewController, UITextFieldDelegate{
     
+    
+
     @IBOutlet weak var firstTextField: UITextField!
     
-    static var recipesList:[Recipe] = []
+    var recipesList:[Recipe] = []
     var ingredients=""
     var prevRect:CGRect?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.        
-        
 //        cm.delegate = self
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
     }
- 
-//    override func viewDidAppear(_ animated: Bool) {
-//        print(ConnectionManager().fetchData())
-//    }
+
     @IBAction func addTextField(_ sender: UIButton) {
-        //    print("here")
-        
         addNewTextField()
-        
         let newFrame = [sender.frame.minX,sender.frame.minY+prevRect!.height+10.0,sender.frame.width,sender.frame.height]
         sender.frame = CGRect(x: newFrame[0], y:newFrame[1] , width: newFrame[2], height: newFrame[3])
-        
     }
     
 //    var cm = ConnectionManager()
     @IBAction func getRecipesAction(_ sender: UIButton) {
         
-    }
-    
-    func didGetRecipes(recipes: [Recipe]) {
-//        ViewController.recipesList = recipes
         
     }
+
+//    var dest:RecipesViewController?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var dest = segue.destination as! ListTableViewController
-        dest.ingredients = self.ingredients
-        dest.reloadInputViews()
-    }
+//        cm.fetchData(ingredients: ingredients)
+        var dest = segue.destination as? RecipesViewController
+        dest!.ing = self.ingredients
+//        dest?.data = recipesList
+//        print("recipe count",recipesList.count)
 
+    }
+    
+//    func didGetRecipes(recipes: [Recipe]) {
+//        self.recipesList = recipes
+//    }
 
     func addNewTextField(){
         let newTextField =  UITextField(frame: CGRect(x: prevRect!.minX, y: prevRect!.minY+prevRect!.height+10.0, width: prevRect!.width, height: prevRect!.height))
@@ -84,6 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate,GetRecipesDelegate {
         }
         ingredients = ingredients.trimmingCharacters(in: .whitespaces)
     }
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -91,6 +88,5 @@ class ViewController: UIViewController, UITextFieldDelegate,GetRecipesDelegate {
         textField.endEditing(true)
         return true
     }
-    
 }
 

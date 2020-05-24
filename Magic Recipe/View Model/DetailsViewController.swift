@@ -11,6 +11,8 @@ import WebKit
 class DetailsViewController: UIViewController, WKNavigationDelegate{
     @IBOutlet weak var webView: WKWebView!
     
+    var url:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
@@ -23,6 +25,7 @@ class DetailsViewController: UIViewController, WKNavigationDelegate{
         }
     }
 }
+
 extension WKWebView {
     func load(_ urlString: String) {
         if let url = URL(string: urlString) {

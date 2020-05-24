@@ -24,11 +24,10 @@ struct ConnectionManager{
         "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
         "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
     ]
-    
-    func fetchData(ingredients: String){
+   
+    func fetchData(ing: String){
+         let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)")! as URL
         
-        var url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ingredients)")! as URL
-
         let request = NSMutableURLRequest(url: url,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
@@ -49,10 +48,10 @@ struct ConnectionManager{
         dataTask.resume()
         
     }
-    
-    
+  
     func parseJson(recipeData: Data)-> [Recipe]{
         let decoder = JSONDecoder()
+        
         var recipes :[Recipe] = []
         do {
             let decodedData = try  decoder.decode(RecipeData.self, from: recipeData)
@@ -60,6 +59,7 @@ struct ConnectionManager{
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
+                print("here")
             }
         } catch{
             print(error)

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D1E53CA2479A08000CCAF1A /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1E53C92479A08000CCAF1A /* ListTableViewController.swift */; };
 		2D475536247975B100DB0E86 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D475535247975B100DB0E86 /* CustomAlert.swift */; };
-		2DB448D6247A687400282F08 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB448D5247A687400282F08 /* ListTableViewCell.swift */; };
+		2D979B4C247AA7D900E641F2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D979B4B247AA7D900E641F2 /* TableViewCell.swift */; };
+		2D979B4E247AB12400E641F2 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D979B4D247AB12400E641F2 /* RecipesViewController.swift */; };
 		2DCDF41A2478104B00121FB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF4192478104B00121FB0 /* AppDelegate.swift */; };
 		2DCDF41C2478104B00121FB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF41B2478104B00121FB0 /* SceneDelegate.swift */; };
 		2DCDF41E2478104B00121FB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCDF41D2478104B00121FB0 /* ViewController.swift */; };
@@ -42,9 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D1E53C92479A08000CCAF1A /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListTableViewController.swift; path = "Magic Recipe/View Model/ListTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		2D475535247975B100DB0E86 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
-		2DB448D5247A687400282F08 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		2D979B4B247AA7D900E641F2 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		2D979B4D247AB12400E641F2 /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipesViewController.swift; path = "Magic Recipe/View Model/RecipesViewController.swift"; sourceTree = SOURCE_ROOT; };
 		2DCDF4162478104B00121FB0 /* Magic Recipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic Recipe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCDF4192478104B00121FB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DCDF41B2478104B00121FB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 				2D475535247975B100DB0E86 /* CustomAlert.swift */,
 				2DCDF449247810D700121FB0 /* ConnectionManager.swift */,
 				2DCDF41D2478104B00121FB0 /* ViewController.swift */,
-				2D1E53C92479A08000CCAF1A /* ListTableViewController.swift */,
-				2DB448D5247A687400282F08 /* ListTableViewCell.swift */,
+				2D979B4D247AB12400E641F2 /* RecipesViewController.swift */,
+				2D979B4B247AA7D900E641F2 /* TableViewCell.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -316,11 +316,11 @@
 				2DCDF41E2478104B00121FB0 /* ViewController.swift in Sources */,
 				2DCDF44A247810D700121FB0 /* ConnectionManager.swift in Sources */,
 				2DCDF41A2478104B00121FB0 /* AppDelegate.swift in Sources */,
-				2D1E53CA2479A08000CCAF1A /* ListTableViewController.swift in Sources */,
+				2D979B4C247AA7D900E641F2 /* TableViewCell.swift in Sources */,
 				2DCDF41C2478104B00121FB0 /* SceneDelegate.swift in Sources */,
-				2DB448D6247A687400282F08 /* ListTableViewCell.swift in Sources */,
 				2DCDF44C2478121100121FB0 /* Recipe.swift in Sources */,
 				2DCDF44E2479085500121FB0 /* DetailsViewController.swift in Sources */,
+				2D979B4E247AB12400E641F2 /* RecipesViewController.swift in Sources */,
 				2D475536247975B100DB0E86 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
