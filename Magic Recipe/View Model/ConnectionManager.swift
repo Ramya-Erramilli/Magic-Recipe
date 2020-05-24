@@ -11,11 +11,14 @@ import Foundation
 // Connection manger recipes not avaiblee outside closure
 // get recipes, pouplate cell by image and title
 // pass href for detaild vc
+protocol GetRecipesDelegate {
+    func didGetRecipes(recipes : [Recipe])
+}
 
 
-
-
-class ConnectionManager {
+struct ConnectionManager{
+    
+    var delegate: GetRecipesDelegate?
     static var recipes:[Recipe] = []
     
     let headers = [
@@ -40,8 +43,9 @@ class ConnectionManager {
                 print(err.localizedDescription)
             }
             if let safeData = data{
-                ConnectionManager.recipes = self.parseJson(recipeData: safeData)
-                print(ConnectionManager.recipes)
+                let recipes = self.parseJson(recipeData: safeData)
+                self.delegate?.didGetRecipes(recipes: recipes)
+                
             }
         })
         dataTask.resume()
@@ -71,3 +75,5 @@ class ConnectionManager {
     }
     
 }
+
+

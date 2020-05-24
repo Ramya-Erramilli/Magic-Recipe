@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate,GetRecipesDelegate {
+
+    
     @IBOutlet weak var firstTextField: UITextField!
     
+    static var recipesList:[Recipe] = []
     var ingredients=""
     var prevRect:CGRect?
     
@@ -18,7 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.        
         
-        
+//        cm.delegate = self
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
@@ -37,24 +40,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+//    var cm = ConnectionManager()
     @IBAction func getRecipesAction(_ sender: UIButton) {
-        ConnectionManager().fetchData(ingredients: ingredients)
         
     }
     
+    func didGetRecipes(recipes: [Recipe]) {
+//        ViewController.recipesList = recipes
+        
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var dest = segue.destination as! ListTableViewController
+        dest.ingredients = self.ingredients
+        dest.reloadInputViews()
+    }
+
+
     func addNewTextField(){
         let newTextField =  UITextField(frame: CGRect(x: prevRect!.minX, y: prevRect!.minY+prevRect!.height+10.0, width: prevRect!.width, height: prevRect!.height))
         newTextField.placeholder = "Enter text here"
         newTextField.font = UIFont.systemFont(ofSize: 15)
         newTextField.borderStyle = UITextField.BorderStyle.roundedRect
         newTextField.autocorrectionType = UITextAutocorrectionType.no
-        newTextField.keyboardType = UIKeyboardType.default
-        newTextField.returnKeyType = UIReturnKeyType.done
+        newTextField.becomeFirstResponder()
+        newTextField.returnKeyType = UIReturnKeyType.default
         newTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         newTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        newTextField.autocapitalizationType = .none
         newTextField.delegate = self
         self.view.addSubview(newTextField)
         prevRect = newTextField.frame
@@ -70,7 +83,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         ingredients = ingredients.trimmingCharacters(in: .whitespaces)
-//        print(ingredients)
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
@@ -79,9 +91,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.endEditing(true)
         return true
     }
-    
-    
-   
     
 }
 
