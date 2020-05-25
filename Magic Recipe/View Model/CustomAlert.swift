@@ -20,9 +20,9 @@ class CustomAlert{
             
             """, preferredStyle: .alert)
     
-        alert.setTitle(font: UIFont.boldSystemFont(ofSize: 26), color: UIColor.white)
+        alert.setTitle(font: UIFont.boldSystemFont(ofSize: 26), color: #colorLiteral(red: 0.8980392157, green: 0.1450980392, blue: 0.01960784314, alpha: 1))
         // Change font and color of message
-        alert.setMessage(font: UIFont(name: "Helvetica", size: 18), color: UIColor.systemBackground)
+        alert.setMessage(font: UIFont(name: "Palatino", size: 18), color: UIColor.systemBackground)
         // Change background color of UIAlertController
         alert.setBackgroudColor(color: UIColor.black)
         
