@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var firstTextField: UITextField!
+    @IBOutlet weak var innerView: UIScrollView!
+    
     
     var recipesList:[Recipe] = []
     var ingredients=""
@@ -19,6 +21,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        innerView.showsVerticalScrollIndicator = true
+        innerView.showsHorizontalScrollIndicator = true
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
@@ -48,6 +52,7 @@ Press Return/Enter once you have added all the ingredients.
     }
     
     func addNewTextField(){
+        
         let newTextField =  UITextField(frame: CGRect(x: prevRect!.minX, y: prevRect!.minY+prevRect!.height+10.0, width: prevRect!.width, height: prevRect!.height))
         newTextField.placeholder = "Enter ingredient name here"
         newTextField.font = UIFont.systemFont(ofSize: 15)
@@ -59,7 +64,7 @@ Press Return/Enter once you have added all the ingredients.
         newTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         newTextField.autocapitalizationType = .none
         newTextField.delegate = self
-        self.view.addSubview(newTextField)
+        innerView.addSubview(newTextField)
         prevRect = newTextField.frame
     }
     
