@@ -22,6 +22,28 @@ class ViewController: UIViewController, UITextFieldDelegate{
         firstTextField.delegate = self
         firstTextField.endEditing(true)
         prevRect = firstTextField.frame
+        
+        let alert = CustomAlert.createAlert(title: "Welcome to Magic Recipe!", descr: """
+            
+Get recipes based on ingredients available to you.
+
+Press Return/Enter once you have added all the ingredients.
+""")
+        self.present(alert, animated: true)
+        
+        
+//        let alert = UIAlertController(title: title, message: """
+//
+//        Welcome to Magic Recipe!
+//
+//
+//
+//        """, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//        self.present(alert, animated: true)
+        
+        
+        
     }
 
     @IBAction func addTextField(_ sender: UIButton) {

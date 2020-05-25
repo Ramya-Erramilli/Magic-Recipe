@@ -27,8 +27,14 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableViewOutlet.dataSource = self
         connectionManager.delegate = self
         connectionManager.errorDelegate = self
+        connectionManager.fetchData(ing: ing,page: page)
         
-        connectionManager.fetchData(ing: ing,page: page)        
+        if ing=="" {
+            DispatchQueue.main.async {
+                let alert = CustomAlert.createAlert(title: "No ingredient entered", descr: "Getting all available recipes...")
+                self.present(alert, animated: true)
+            }
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -47,7 +53,6 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         imageView.image = image
         cell.backgroundView = UIView()
         cell.backgroundView!.addSubview(imageView)
-        
         return cell
     }
     
@@ -70,6 +75,9 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func didGetRecipes(recipes: [Recipe]) {
         data += recipes
+        
+        
+        
         DispatchQueue.main.async {
             self.tableViewOutlet.reloadData()            
         }
