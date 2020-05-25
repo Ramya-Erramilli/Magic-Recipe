@@ -12,9 +12,10 @@ class DetailsViewController: UIViewController, WKNavigationDelegate{
     @IBOutlet weak var webView: WKWebView!
     
     var url:String = ""
-    
+    var titleName:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = titleName
         webView.navigationDelegate = self
         loadURL(url: url)
     }

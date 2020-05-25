@@ -57,13 +57,13 @@ class ViewController: UIViewController, UITextFieldDelegate{
         if var ing = textField.text{
             ing = ing.trimmingCharacters(in: .whitespaces)
             if self.ingredients == ""{
-                self.ingredients += ing
+                self.ingredients = ing
             }else{
                 self.ingredients += ",\(ing)"
             }
         }
         ingredients = ingredients.trimmingCharacters(in: .whitespaces)
-        print(ingredients)
+//        print(ingredients)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

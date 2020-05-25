@@ -7,10 +7,14 @@
 //
 
 
+
+//Pagination
+//Custom alerts
+//unit and ui test cases
+//documentation
+
+
 import Foundation
-// Connection manger recipes not avaiblee outside closure
-// get recipes, pouplate cell by image and title
-// pass href for detaild vc
 protocol GetRecipesDelegate {
     func didGetRecipes(recipes : [Recipe])
 }
@@ -25,9 +29,9 @@ struct ConnectionManager{
         "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
     ]
    
-    func fetchData(ing: String){
+    func fetchData(ing: String,page:Int){
 
-         let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)")! as URL
+         let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)&p=\(page)")! as URL
 
         let request = NSMutableURLRequest(url: url,
                                           cachePolicy: .useProtocolCachePolicy,
@@ -59,6 +63,7 @@ struct ConnectionManager{
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
+                print(recipe)
             }
         } catch{
             print(error)

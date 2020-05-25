@@ -15,13 +15,14 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var connectionManager = ConnectionManager()
     var data:[Recipe] = []
     var ing:String = ""
+    var page = 1
    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
         connectionManager.delegate = self
-        connectionManager.fetchData(ing: ing)
+        connectionManager.fetchData(ing: ing,page: page)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -34,9 +35,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         cell.name.text = currentRecipe.title
         let imgNum = Array(currentRecipe.thumbnail)[currentRecipe.thumbnail.count-5]
         let imageURL = "http://img.recipepuppy.com/\(imgNum).jpg"
-//        print(imageURL)
         cell.imageViewOutlet.setImageFromUrl(ImageURL: imageURL)
-        
         let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
         let image = UIImage(named: "cellBackground")
         imageView.image = image
@@ -51,14 +50,25 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         var detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailVC") as! DetailsViewController
         
         detailVC.url = data[indexPath.row].href
+        detailVC.titleName = data[indexPath.row].title
         self.show(detailVC, sender: self)
      
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == data.count-1{
+            page += 1
+            connectionManager.fetchData(ing: ing, page: page)
+        }
+    }
+    
+    
+    
 
 
     func didGetRecipes(recipes: [Recipe]) {
-        data = recipes
-//        print("data recived")
+        data += recipes
         DispatchQueue.main.async {
              self.tableViewOutlet.reloadData()
          }
