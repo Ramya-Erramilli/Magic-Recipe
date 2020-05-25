@@ -8,21 +8,27 @@
 
 import UIKit
 
-class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetRecipesDelegate {
-
+class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetRecipesDelegate,ErrorReceived {
+    
+    
     @IBOutlet weak var tableViewOutlet: UITableView!
     
     var connectionManager = ConnectionManager()
     var data:[Recipe] = []
     var ing:String = ""
     var page = 1
-   
+    
+    
+    var errorReceived:Error?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = self
         connectionManager.delegate = self
-        connectionManager.fetchData(ing: ing,page: page)
+        connectionManager.errorDelegate = self
+        
+        connectionManager.fetchData(ing: ing,page: page)        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -47,12 +53,11 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailVC") as! DetailsViewController
-        
+        let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailVC") as! DetailsViewController
         detailVC.url = data[indexPath.row].href
         detailVC.titleName = data[indexPath.row].title
         self.show(detailVC, sender: self)
-     
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -63,34 +68,45 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-    
-    
-
-
     func didGetRecipes(recipes: [Recipe]) {
         data += recipes
         DispatchQueue.main.async {
-             self.tableViewOutlet.reloadData()
-         }
+            self.tableViewOutlet.reloadData()
+            
+        }
         
     }
-   
+    
+    func errorReceived(error: Error) {
+        DispatchQueue.main.async {
+            self.showAlert(error)
+        }
+    }
+    
+    func showAlert(_ error:Error){
+        let alert = CustomAlert.createAlert(title: "Error", descr: error.localizedDescription)
+        self.present(alert, animated: true) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
 }
 
 extension UIImageView{
     func setImageFromUrl(ImageURL :String) {
-       URLSession.shared.dataTask( with: NSURL(string:ImageURL)! as URL, completionHandler: {
-          (data, response, error) -> Void in
-        
-        if let err = error{
-            print(err.localizedDescription)
-        }
-        
-          DispatchQueue.main.async {
-             if let data = data {
-                self.image = UIImage(data: data)
-             }
-          }
-       }).resume()
+        URLSession.shared.dataTask( with: NSURL(string:ImageURL)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            
+            if let err = error{
+                print(err.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                if let data = data {
+                    self.image = UIImage(data: data)
+                }
+            }
+        }).resume()
     }
 }

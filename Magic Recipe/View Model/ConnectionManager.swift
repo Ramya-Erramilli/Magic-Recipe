@@ -15,22 +15,26 @@
 
 
 import Foundation
+
 protocol GetRecipesDelegate {
     func didGetRecipes(recipes : [Recipe])
 }
 
+protocol ErrorReceived {
+    func errorReceived(error:Error)
+}
 
 struct ConnectionManager{
     
     var delegate: GetRecipesDelegate?
- 
+    var errorDelegate:ErrorReceived?
+    
     let headers = [
         "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
         "x-rapidapi-key": "1d031451bfmsh7cac25834664a15p1614bfjsn868ec26a72e9"
     ]
    
     func fetchData(ing: String,page:Int){
-
          let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)&p=\(page)")! as URL
 
         let request = NSMutableURLRequest(url: url,
@@ -43,15 +47,15 @@ struct ConnectionManager{
         
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             if let err = error { //Error in retriving data
-                print(err.localizedDescription)
+                print("cm",err.localizedDescription)
+                self.errorDelegate?.errorReceived(error: err)                
             }
             if let safeData = data{
                 let recipes = self.parseJson(recipeData: safeData)
-                self.delegate?.didGetRecipes(recipes: recipes)                
+                self.delegate?.didGetRecipes(recipes: recipes)
             }
         })
         dataTask.resume()
-        
     }
   
     func parseJson(recipeData: Data)-> [Recipe]{
@@ -63,12 +67,10 @@ struct ConnectionManager{
             for i in decodedData.results{
                 let recipe = Recipe(href: i.href, title: i.title, thumbnail: i.thumbnail, ingredients: i.ingredients)
                 recipes.append(recipe)
-                print(recipe)
             }
         } catch{
             print(error)
         }
-
         return recipes
     }
     
