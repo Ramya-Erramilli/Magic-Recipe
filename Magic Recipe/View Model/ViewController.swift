@@ -30,20 +30,7 @@ Get recipes based on ingredients available to you.
 Press Return/Enter once you have added all the ingredients.
 """)
         self.present(alert, animated: true)
-        
-        
-//        let alert = UIAlertController(title: title, message: """
-//
-//        Welcome to Magic Recipe!
-//
-//
-//
-//        """, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        self.present(alert, animated: true)
-        
-        
-        
+
     }
 
     @IBAction func addTextField(_ sender: UIButton) {
@@ -78,14 +65,13 @@ Press Return/Enter once you have added all the ingredients.
     func textFieldDidEndEditing(_ textField: UITextField) {
         if var ing = textField.text{
             ing = ing.trimmingCharacters(in: .whitespaces)
-            if self.ingredients == ""{
-                self.ingredients = ing
+            if self.ingredients == "" || ing == " "{
+                self.ingredients += ing
             }else{
                 self.ingredients += ",\(ing)"
             }
         }
         ingredients = ingredients.trimmingCharacters(in: .whitespaces)
-//        print(ingredients)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

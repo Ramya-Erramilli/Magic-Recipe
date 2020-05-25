@@ -16,7 +16,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var connectionManager = ConnectionManager()
     var data:[Recipe] = []
     var ing:String = ""
-    var page = 1   
+    var page = 1
     var errorReceived:Error?
     
     override func viewDidLoad() {
@@ -43,9 +43,9 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         let currentRecipe = data[indexPath.row]
         cell.name.text = currentRecipe.title
-        let imgNum = Array(currentRecipe.thumbnail)[currentRecipe.thumbnail.count-5]
-        let imageURL = "http://img.recipepuppy.com/\(imgNum).jpg"
-        cell.imageViewOutlet.setImageFromUrl(ImageURL: imageURL)
+//        let imgNum = Array(currentRecipe.thumbnail)[currentRecipe.thumbnail.count-5]
+//        let imageURL = "http://img.recipepuppy.com/\(imgNum).jpg"
+        cell.imageViewOutlet.setImageFromUrl(ImageURL: currentRecipe.thumbnail)
         let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
         let image = UIImage(named: "cellBackground")
         imageView.image = image
@@ -74,6 +74,11 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func didGetRecipes(recipes: [Recipe]) {
         data += recipes
         DispatchQueue.main.async {
+            if recipes.count==0{
+                let alert = CustomAlert.createAlert(title: "Invalid ingredients", descr: "Please check the ingrdients you have entered")
+                self.present(alert, animated: true)
+            }
+            
             self.tableViewOutlet.reloadData()            
         }
     }
