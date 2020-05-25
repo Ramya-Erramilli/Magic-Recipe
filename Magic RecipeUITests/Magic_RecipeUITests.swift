@@ -10,6 +10,8 @@ import XCTest
 
 class Magic_RecipeUITests: XCTestCase {
 
+    var app:XCUIApplication!
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -17,10 +19,34 @@ class Magic_RecipeUITests: XCTestCase {
         continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+
+        // We send a command line argument to our app,
+        // to enable it to reset its state
+        app.launchArguments.append("--uitesting")
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    
+    func testGoingThroughOnboarding() {
+        app.launch()
+
+        // Make sure we're displaying onboarding
+//        XCTAssertTrue(app.)
+
+        // Swipe left three times to go through the pages
+        app.swipeLeft()
+        app.swipeLeft()
+        app.swipeLeft()
+
+        // Tap the "Done" button
+        app.buttons["Done"].tap()
+
+        // Onboarding should no longer be displayed
+//        XCTAssertFalse(app.isDisplayingOnboarding)
     }
 
     func testExample() throws {

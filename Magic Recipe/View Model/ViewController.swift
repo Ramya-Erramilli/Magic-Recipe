@@ -46,6 +46,7 @@ Press Return/Enter once you have added all the ingredients.
         let dest = segue.destination as? RecipesViewController
         dest!.ing = self.ingredients
     }
+    
     func addNewTextField(){
         let newTextField =  UITextField(frame: CGRect(x: prevRect!.minX, y: prevRect!.minY+prevRect!.height+10.0, width: prevRect!.width, height: prevRect!.height))
         newTextField.placeholder = "Enter ingredient name here"

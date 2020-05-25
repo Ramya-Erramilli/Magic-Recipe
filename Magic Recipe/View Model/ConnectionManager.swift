@@ -27,6 +27,7 @@ struct ConnectionManager{
     ]
    
     func fetchData(ing: String,page:Int){
+        
          let url = NSURL(string: "https://recipe-puppy.p.rapidapi.com/?i=\(ing)&p=\(page)")! as URL
 
         let request = NSMutableURLRequest(url: url,
@@ -71,6 +72,7 @@ struct ConnectionManager{
             errorHere = error
 //            print(errorHere)
         }
+        print(recipes)
         return (recipes,errorHere)
     }
     
