@@ -15,13 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="F0g-qC-XgR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="F0g-qC-XgR">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-K6-fOG">
-                                <rect key="frame" x="112" y="706" width="191" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUQ-K6-fOG">
+                                <rect key="frame" x="112" y="724" width="190" height="46"/>
                                 <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="30"/>
                                 <state key="normal" title="Get Recipes!">
                                     <color key="titleColor" red="0.78863441780821919" green="0.23139982876712337" blue="0.17433647260273974" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,40 +29,31 @@
                                     <segue destination="yk6-e6-x6S" kind="show" id="BJy-6C-3mc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press Enter/done once you all the required ingredients are entered." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8m-rm-IZH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Press Enter/done once you all the required ingredients are entered." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8m-rm-IZH">
                                 <rect key="frame" x="16" y="778" width="383" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAGIC RECIPE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mk-Ep-Jy6">
-                                <rect key="frame" x="79" y="271" width="249" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="30"/>
-                                <color key="textColor" red="0.89803921568627454" green="0.14509803921568626" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="G7P-2N-drG">
+                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="G7P-2N-drG">
                                 <rect key="frame" x="43" y="330" width="342" height="364"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly3-cl-tTS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ly3-cl-tTS">
                                         <rect key="frame" x="15" y="8" width="162" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter ingredient name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2zl-fL-CgH">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter ingredient name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2zl-fL-CgH">
                                         <rect key="frame" x="34" y="47" width="244" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-cS-Tf0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4Z-cS-Tf0">
                                         <rect key="frame" x="286" y="47" width="38" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="pzv-Zg-g5P"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="plus" catalog="system"/>
@@ -73,11 +62,46 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="ly3-cl-tTS" firstAttribute="leading" secondItem="py1-nZ-Phq" secondAttribute="leading" constant="15" id="081-wQ-skR"/>
+                                    <constraint firstItem="T4Z-cS-Tf0" firstAttribute="leading" secondItem="2zl-fL-CgH" secondAttribute="trailing" constant="8" id="7T1-12-kUR"/>
+                                    <constraint firstAttribute="bottom" secondItem="2zl-fL-CgH" secondAttribute="bottom" constant="283" id="9ep-on-O8Z"/>
+                                    <constraint firstItem="ly3-cl-tTS" firstAttribute="top" secondItem="G7P-2N-drG" secondAttribute="topMargin" id="9xb-s2-tpu"/>
+                                    <constraint firstAttribute="trailing" secondItem="T4Z-cS-Tf0" secondAttribute="trailing" constant="18" id="B66-FM-lWl"/>
+                                    <constraint firstItem="T4Z-cS-Tf0" firstAttribute="top" secondItem="py1-nZ-Phq" secondAttribute="top" constant="47" id="KVc-cu-Za9"/>
+                                    <constraint firstItem="2zl-fL-CgH" firstAttribute="bottom" secondItem="T4Z-cS-Tf0" secondAttribute="bottom" id="VAt-95-D00"/>
+                                    <constraint firstItem="py1-nZ-Phq" firstAttribute="trailing" secondItem="T4Z-cS-Tf0" secondAttribute="trailing" constant="18" id="YVm-lb-32Y"/>
+                                    <constraint firstItem="2zl-fL-CgH" firstAttribute="leading" secondItem="py1-nZ-Phq" secondAttribute="leading" constant="34" id="kJ4-sh-9Ls"/>
+                                    <constraint firstItem="2zl-fL-CgH" firstAttribute="top" secondItem="T4Z-cS-Tf0" secondAttribute="top" id="xMX-5t-dFt"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YcZ-3y-S8s"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="py1-nZ-Phq"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAGIC RECIPE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Mk-Ep-Jy6">
+                                <rect key="frame" x="95" y="259" width="224" height="33.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="30"/>
+                                <color key="textColor" red="0.89803921568627454" green="0.14509803921568626" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.69019607843137254" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="F0g-qC-XgR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="97U-nK-tCT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YUQ-K6-fOG" secondAttribute="bottom" constant="92" id="9Hj-kw-wZ6"/>
+                            <constraint firstItem="F0g-qC-XgR" firstAttribute="top" secondItem="7Mk-Ep-Jy6" secondAttribute="bottom" constant="-204.5" id="DEW-xp-XBT"/>
+                            <constraint firstItem="YUQ-K6-fOG" firstAttribute="top" secondItem="G7P-2N-drG" secondAttribute="bottom" constant="30" id="Ff9-3h-NBZ"/>
+                            <constraint firstItem="YUQ-K6-fOG" firstAttribute="centerX" secondItem="7Mk-Ep-Jy6" secondAttribute="centerX" id="J3w-To-Yb3"/>
+                            <constraint firstItem="K8m-rm-IZH" firstAttribute="top" secondItem="YUQ-K6-fOG" secondAttribute="bottom" constant="8" id="NTF-ta-bzk"/>
+                            <constraint firstItem="G7P-2N-drG" firstAttribute="top" secondItem="7Mk-Ep-Jy6" secondAttribute="bottom" constant="37.5" id="Pz4-74-ZaV"/>
+                            <constraint firstItem="YUQ-K6-fOG" firstAttribute="centerX" secondItem="K8m-rm-IZH" secondAttribute="centerX" id="WOj-eM-CMl"/>
+                            <constraint firstItem="7Mk-Ep-Jy6" firstAttribute="centerX" secondItem="F0g-qC-XgR" secondAttribute="centerX" id="YKH-67-uhj"/>
+                            <constraint firstItem="YUQ-K6-fOG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="112" id="a70-Mv-PT9"/>
+                            <constraint firstAttribute="bottom" secondItem="F0g-qC-XgR" secondAttribute="bottom" id="d24-od-ba5"/>
+                            <constraint firstItem="F0g-qC-XgR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jZZ-cE-0lh"/>
+                            <constraint firstItem="G7P-2N-drG" firstAttribute="leading" secondItem="F0g-qC-XgR" secondAttribute="trailing" constant="-371" id="kpb-sX-3dI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="G7P-2N-drG" secondAttribute="trailing" constant="29" id="oyP-cw-gUQ"/>
+                            <constraint firstItem="F0g-qC-XgR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tQ0-5W-QaB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Magic Recipe" id="9PK-uZ-e8W"/>
