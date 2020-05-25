@@ -71,8 +71,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func didGetRecipes(recipes: [Recipe]) {
         data += recipes
         DispatchQueue.main.async {
-            self.tableViewOutlet.reloadData()
-            
+            self.tableViewOutlet.reloadData()            
         }
         
     }

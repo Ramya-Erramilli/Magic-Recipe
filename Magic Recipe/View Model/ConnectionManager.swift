@@ -47,20 +47,27 @@ struct ConnectionManager{
         
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             if let err = error { //Error in retriving data
-                print("cm",err.localizedDescription)
+//                print("cm",err.localizedDescription)
+                //Connection errors
                 self.errorDelegate?.errorReceived(error: err)                
             }
             if let safeData = data{
-                let recipes = self.parseJson(recipeData: safeData)
+                let recipes = self.parseJson(recipeData: safeData).0
+                let errors = self.parseJson(recipeData: safeData).1
                 self.delegate?.didGetRecipes(recipes: recipes)
+                if let error = errors{
+                    //data errors
+                    self.errorDelegate?.errorReceived(error: error)
+                }
+                
             }
         })
         dataTask.resume()
     }
   
-    func parseJson(recipeData: Data)-> [Recipe]{
+    func parseJson(recipeData: Data)-> ([Recipe],Error?){
         let decoder = JSONDecoder()
-        
+        var errorHere:Error?
         var recipes :[Recipe] = []
         do {
             let decodedData = try  decoder.decode(RecipeData.self, from: recipeData)
@@ -69,9 +76,10 @@ struct ConnectionManager{
                 recipes.append(recipe)
             }
         } catch{
-            print(error)
+            errorHere = error
+            print(errorHere)
         }
-        return recipes
+        return (recipes,errorHere)
     }
     
 }
