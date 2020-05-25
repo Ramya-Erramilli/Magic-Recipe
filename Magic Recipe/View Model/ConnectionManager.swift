@@ -6,14 +6,6 @@
 //  Copyright © 2020 Ramya Seshagiri. All rights reserved.
 //
 
-
-
-//Pagination
-//Custom alerts
-//unit and ui test cases
-//documentation
-
-
 import Foundation
 
 protocol GetRecipesDelegate {
@@ -77,7 +69,7 @@ struct ConnectionManager{
             }
         } catch{
             errorHere = error
-            print(errorHere)
+//            print(errorHere)
         }
         return (recipes,errorHere)
     }
