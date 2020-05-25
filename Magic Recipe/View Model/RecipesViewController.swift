@@ -16,9 +16,7 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var connectionManager = ConnectionManager()
     var data:[Recipe] = []
     var ing:String = ""
-    var page = 1
-    
-    
+    var page = 1   
     var errorReceived:Error?
     
     override func viewDidLoad() {
@@ -75,13 +73,9 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func didGetRecipes(recipes: [Recipe]) {
         data += recipes
-        
-        
-        
         DispatchQueue.main.async {
             self.tableViewOutlet.reloadData()            
         }
-        
     }
     
     func errorReceived(error: Error) {
@@ -96,8 +90,6 @@ class RecipesViewController: UIViewController,UITableViewDelegate,UITableViewDat
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
-    
 }
 
 extension UIImageView{

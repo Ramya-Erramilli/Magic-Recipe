@@ -24,6 +24,13 @@ class DetailsViewController: UIViewController, WKNavigationDelegate{
         if let url = URL(string: url) {
             let request = URLRequest(url: url)
             webView.load(request)
+            if webView.isLoading == false{
+                let alert = CustomAlert.createAlert(title: "Please wait", descr: "Your recipe is loading!")
+                self.present(alert, animated: true) {
+                    self.webView.reload()
+                }
+            }
+            
         }
     }
 }
